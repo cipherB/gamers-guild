@@ -51,7 +51,9 @@ const SignUp = () => {
       lg:px-14 lg:w-[520px] md:py-10 py-8' 
     >
         <div className='flex items-center justify-center' >
-          <img src={logo} alt='logo' className='w-20 h-16 mb-8' />
+          <Link to="/" >
+            <img src={logo} alt='logo' className='w-20 h-16 mb-8' />
+          </Link>
         </div>
         <h2 className='text-center mb-6 font-bold text-2xl' >Join our guild for gamers</h2>
         <form onSubmit={handleSubmit} >
