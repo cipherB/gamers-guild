@@ -1,5 +1,6 @@
 import { FC } from 'react';
 import { Link } from 'react-router-dom';
+import { slug } from './ReUsables';
 
 interface Props {
   id: number;
@@ -14,10 +15,10 @@ interface Props {
   tags: string[];
 }
 
-const Blog:FC<Props> = ({ author, title, date, read_time, category, tags, id  }) => {
+const Blog:FC<Props> = ({ author, title, date, read_time, category, tags, id  }) => {  
   return (
     <div className='w-full flex justify-between gap-x-4' >
-      <Link to={`/${author}/${title}/${id}`}>
+      <Link to={`/${slug(author)}/${slug(title)}/${id}`}>
         <div className='flex items-center mb-2' >
           <img  
             src={`https://joeschmoe.io/api/v1/${author.split(' ')[0]}`}
@@ -34,7 +35,7 @@ const Blog:FC<Props> = ({ author, title, date, read_time, category, tags, id  })
           </span> 
         </p>
       </Link>
-      <Link to={`/${author}/${title}/${id}`}>
+      <Link to={`/${slug(author)}/${slug(title)}/${id}`}>
         <img 
           src={`https://source.unsplash.com/1600x900/?${tags[0].toLowerCase()}`} 
           alt={title} 

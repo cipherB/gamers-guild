@@ -3,6 +3,7 @@ import Carousel from '../components/Carousel';
 import Blog from '../components/Blog';
 import { articles, discoverArticles } from '../data';
 import { Link } from 'react-router-dom';
+import { slug } from '../components/ReUsables';
 
 const Homepage = () => {
   const trending = articles.slice(0, 6)
@@ -22,7 +23,7 @@ const Homepage = () => {
                 trending.map((item, id) => (
                   <div key={id} className='flex gap-x-2 lg:gap-x-4' >
                     <h4 className='text-2xl font-semibold' >0{id+1} </h4>
-                    <Link to={`/${item.name}/${item.title}/${item.id}`}>
+                    <Link to={`/${slug(item.name)}/${slug(item.title)}/${item.id}`}>
                       <div className='flex items-center mb-2' >
                         <img  
                           src={`https://joeschmoe.io/api/v1/${item.name.split(' ')[0]}`} 
@@ -46,7 +47,7 @@ const Homepage = () => {
       <section className=' py-8 lg:px-14 md:px-8 px-4 lg:flex justify-center' >
         <div className='lg:max-w-[1350px] lg:flex gap-x-9 flex-row-reverse'>
           <aside>
-            <div className='lg:sticky top-[100px] border-b border-neutral pb-10 mb-10'>
+            <div className='lg:sticky top-[100px] pb-10 mb-10'>
               <p className='font-semibold mb-4' >What you might like</p>
               <div className='flex gap-4 flex-wrap'>
                 {
