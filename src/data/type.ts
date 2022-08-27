@@ -4,6 +4,7 @@ export interface ICarousel{
 }
 
 export interface IArticles {
+  id: number;
   name: string;
   title: string;
   date: string;

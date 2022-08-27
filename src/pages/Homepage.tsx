@@ -2,6 +2,7 @@ import React from 'react'
 import Carousel from '../components/Carousel';
 import Blog from '../components/Blog';
 import { articles, discoverArticles } from '../data';
+import { Link } from 'react-router-dom';
 
 const Homepage = () => {
   const trending = articles.slice(0, 6)
@@ -21,7 +22,7 @@ const Homepage = () => {
                 trending.map((item, id) => (
                   <div key={id} className='flex gap-x-2 lg:gap-x-4' >
                     <h4 className='text-2xl font-semibold' >0{id+1} </h4>
-                    <div>
+                    <Link to={`/${item.name}/${item.title}/${item.id}`}>
                       <div className='flex items-center mb-2' >
                         <img  
                           src={`https://joeschmoe.io/api/v1/${item.name.split(' ')[0]}`} 
@@ -34,7 +35,7 @@ const Homepage = () => {
                       <div>
                         <p>{item.date} . {item.read_time} mins read </p>
                       </div>
-                    </div>
+                    </Link>
                   </div>
                 ))
               }
@@ -61,6 +62,7 @@ const Homepage = () => {
               articleList.map((item, id) => (
                 <div key={id} className='w-full mb-8'>
                   <Blog 
+                    id={item.id}
                     author={item.name}
                     category={item.category}
                     date={item.date}
