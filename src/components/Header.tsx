@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { HiMenuAlt3 } from 'react-icons/hi';
 import { IoMdClose } from 'react-icons/io';
 import logo from '../assets/gamers-guild-1.png';
+import { Link } from 'react-router-dom';
 
 const Header = () => {
   const [menu, setMenu] = useState(false)
@@ -15,12 +16,12 @@ const Header = () => {
           <img src={logo} alt="logo" className=' h-11 w-24 cursor-pointer' />
         </div>
         <ul className=' list-none flex gap-x-8 items-center'>
-          <li><a href='/' >Our Story</a></li>
-          <li><a href='/' >Write</a></li>
-          <li><a href='/' >Sign Up</a></li>
+          <li><Link to='/' >Our Story</Link></li>
+          <li><Link to='/' >Write</Link></li>
+          <li><Link to='/sign-up' >Sign Up</Link></li>
           <li>
             <button className="py-2 px-4 rounded-3xl bg-site-primary border-none">
-              Get Started
+              <Link to='/login' >Get Started</Link>
             </button>
           </li>
         </ul>
@@ -42,16 +43,16 @@ const Header = () => {
         >
           <ul className='list-none w-full px-10'>
             <li className='border-b border-slate-500 w-full py-4 text-right ' >
-              <a href='/' className='text-dark font-semibold' >Our Story</a>
+              <Link to='/' className='text-dark font-semibold' >Our Story</Link>
             </li>
             <li className='border-b border-slate-500 w-full py-4 text-right'>
-              <a href='/' className='text-dark font-semibold' >Write</a>
+              <Link to='/' className='text-dark font-semibold' >Write</Link>
             </li>
             <li className='border-b border-slate-500 w-full py-4 text-right'>
-              <a href='/' className='text-dark font-semibold ' >Sign Up</a>
+              <Link to='/sign-up' className='text-dark font-semibold ' >Sign Up</Link>
             </li>
             <li className=' w-full py-4 text-right'>
-              <a href='/' className='text-dark font-semibold' >Sign In</a>
+              <Link to='/login' className='text-dark font-semibold' >Sign In</Link>
             </li>
           </ul>
         </div>
