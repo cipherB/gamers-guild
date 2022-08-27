@@ -7,7 +7,8 @@ module.exports = {
         site: {
           primary: "#208607"
         },
-        dark: '#242424'
+        dark: '#242424',
+        neutral: "#ffffff6d",
       }
     },
   },

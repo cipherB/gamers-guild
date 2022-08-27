@@ -6,7 +6,7 @@ const Footer = () => {
   return (
     <footer className='w-full bg-site-primary py-3 px-4 md:py-6 md:flex justify-center' >
       <div>
-        <section className='border-b border-[#ffffff6d] pb-3 mt-5' >
+        <section className='border-b border-neutral pb-3 mt-5' >
           <div className='w-full md:flex justify-center'>
             <img src={footerLogo} alt="logo" className='h-14 w-24 mb-2 cursor-pointer' />
           </div>
