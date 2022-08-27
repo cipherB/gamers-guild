@@ -21,6 +21,7 @@ export const carousels:ICarousel[] = [
 
 export const articles:IArticles[] = [
   {
+    id: 1,
     name: "Ty Sellin",
     date: "Aug 19",
     title: "19 Facts About Roblox",
@@ -29,6 +30,7 @@ export const articles:IArticles[] = [
     tags: ["Roblox", "Online", "World Building"]
   },
   {
+    id: 2,
     name: "Leroy Tenold",
     date: "Jul 29",
     title: "MineCraft latest Updates for V 9.1",
@@ -37,6 +39,7 @@ export const articles:IArticles[] = [
     tags: ["Minecraft", "Adventure", "Steve"]
   },
   {
+    id: 3,
     name: "Perturbator",
     date: "Aug 19",
     title: "What you need to know about the League of Legends easter egg",
@@ -45,6 +48,7 @@ export const articles:IArticles[] = [
     tags: ["Roblox", "Online", "World Building"]
   },
   {
+    id: 4,
     name: "Ching",
     date: "Aug 02",
     title: "How an Endermen can possibly give you trauma",
@@ -53,6 +57,7 @@ export const articles:IArticles[] = [
     tags: ["Minecraft", "Online", "World Building"]
   },
   {
+    id: 5,
     name: "Josie Siwy",
     date: "Aug 01",
     title: "19 Facts About Roblock",
@@ -61,6 +66,7 @@ export const articles:IArticles[] = [
     tags: ["Roblox", "Online", "World Building"]
   },
   {
+    id: 6,
     name: "Chun Li",
     date: "Jul 28",
     title: "Why Street Fighter will always remain the king of arcades",
@@ -69,6 +75,7 @@ export const articles:IArticles[] = [
     tags: ["Arcade", "Online", "World Building"]
   },
   {
+    id: 7,
     name: "PumpkinEaterGriffin",
     date: "Jun 04",
     title: "Peter Griffin will be having a fortnite appearance. Why?",
@@ -77,6 +84,7 @@ export const articles:IArticles[] = [
     tags: ["FortNite", "Online", "World Building"]
   },
   {
+    id: 8,
     name: "Leroy Tenold",
     date: "Jul 29",
     title: "MineCraft latest Updates for V 9.1",
@@ -85,6 +93,7 @@ export const articles:IArticles[] = [
     tags: ["Games", "Online", "World Building"]
   },
   {
+    id: 9,
     name: "Perturbator",
     date: "Aug 19",
     title: "What you need to know about the League of Legends easter egg",
@@ -93,6 +102,7 @@ export const articles:IArticles[] = [
     tags: ["Games", "Online", "World Building"]
   },
   {
+    id: 10,
     name: "Ching",
     date: "Aug 02",
     title: "How an Endermen can possibly give you trauma",
@@ -101,6 +111,7 @@ export const articles:IArticles[] = [
     tags: ["Games", "Online", "World Building"]
   },
   {
+    id: 11,
     name: "Josie Siwy",
     date: "Aug 01",
     title: "19 Facts About Roblock",
@@ -109,6 +120,7 @@ export const articles:IArticles[] = [
     tags: ["Games", "Online", "World Building"]
   },
   {
+    id: 12,
     name: "Chun Li",
     date: "Jul 28",
     title: "Why Street Fighter will always remain the king of arcades",
@@ -117,6 +129,7 @@ export const articles:IArticles[] = [
     tags: ["Games", "Online", "World Building"]
   },
   {
+    id: 13,
     name: "Ty Sellin",
     date: "Aug 19",
     title: "19 Facts About Roblox",
@@ -125,6 +138,7 @@ export const articles:IArticles[] = [
     tags: ["Games", "Online", "World Building"]
   },
   {
+    id: 14,
     name: "Leroy Tenold",
     date: "Jul 29",
     title: "MineCraft latest Updates for V 9.1",
@@ -133,6 +147,7 @@ export const articles:IArticles[] = [
     tags: ["Games", "Online", "World Building"]
   },
   {
+    id: 15,
     name: "Perturbator",
     date: "Aug 19",
     title: "What you need to know about the League of Legends easter egg",
@@ -141,6 +156,7 @@ export const articles:IArticles[] = [
     tags: ["Games", "Online", "World Building"]
   },
   {
+    id: 16,
     name: "Ching",
     date: "Aug 02",
     title: "How an Endermen can possibly give you trauma",
@@ -149,6 +165,7 @@ export const articles:IArticles[] = [
     tags: ["Games", "Online", "World Building"]
   },
   {
+    id: 17,
     name: "Josie Siwy",
     date: "Aug 01",
     title: "19 Facts About Roblock",
@@ -157,6 +174,7 @@ export const articles:IArticles[] = [
     tags: ["Games", "Online", "World Building"]
   },
   {
+    id: 18,
     name: "Chun Li",
     date: "Jul 28",
     title: "Why Street Fighter will always remain the king of arcades",
@@ -165,6 +183,7 @@ export const articles:IArticles[] = [
     tags: ["Games", "Online", "World Building"]
   },
   {
+    id: 19,
     name: "Ty Sellin",
     date: "Aug 19",
     title: "19 Facts About Roblox",
@@ -173,6 +192,7 @@ export const articles:IArticles[] = [
     tags: ["Games", "Online", "World Building"]
   },
   {
+    id: 20,
     name: "Leroy Tenold",
     date: "Jul 29",
     title: "MineCraft latest Updates for V 9.1",
@@ -181,6 +201,7 @@ export const articles:IArticles[] = [
     tags: ["Games", "Online", "World Building"]
   },
   {
+    id: 21,
     name: "Perturbator",
     date: "Aug 19",
     title: "What you need to know about the League of Legends easter egg",
@@ -189,6 +210,7 @@ export const articles:IArticles[] = [
     tags: ["Games", "Online", "World Building"]
   },
   {
+    id: 22,
     name: "Ching",
     date: "Aug 02",
     title: "How an Endermen can possibly give you trauma",
@@ -197,6 +219,7 @@ export const articles:IArticles[] = [
     tags: ["Games", "Online", "World Building"]
   },
   {
+    id: 23,
     name: "Josie Siwy",
     date: "Aug 01",
     title: "19 Facts About Roblock",
@@ -205,6 +228,7 @@ export const articles:IArticles[] = [
     tags: ["Games", "Online", "World Building"]
   },
   {
+    id: 24,
     name: "Chun Li",
     date: "Jul 28",
     title: "Why Street Fighter will always remain the king of arcades",
@@ -213,6 +237,7 @@ export const articles:IArticles[] = [
     tags: ["Games", "Online", "World Building"]
   },
   {
+    id: 25,
     name: "Ty Sellin",
     date: "Aug 19",
     title: "19 Facts About Roblox",
@@ -221,6 +246,7 @@ export const articles:IArticles[] = [
     tags: ["Games", "Online", "World Building"]
   },
   {
+    id: 26,
     name: "Leroy Tenold",
     date: "Jul 29",
     title: "MineCraft latest Updates for V 9.1",
@@ -229,6 +255,7 @@ export const articles:IArticles[] = [
     tags: ["Games", "Online", "World Building"]
   },
   {
+    id: 27,
     name: "Perturbator",
     date: "Aug 19",
     title: "What you need to know about the League of Legends easter egg",
@@ -237,6 +264,7 @@ export const articles:IArticles[] = [
     tags: ["Games", "Online", "World Building"]
   },
   {
+    id: 28,
     name: "Ching",
     date: "Aug 02",
     title: "How an Endermen can possibly give you trauma",
@@ -245,6 +273,7 @@ export const articles:IArticles[] = [
     tags: ["Games", "Online", "World Building"]
   },
   {
+    id: 29,
     name: "Josie Siwy",
     date: "Aug 01",
     title: "19 Facts About Roblock",
@@ -253,6 +282,7 @@ export const articles:IArticles[] = [
     tags: ["Games", "Online", "World Building"]
   },
   {
+    id: 30,
     name: "Chun Li",
     date: "Jul 28",
     title: "Why Street Fighter will always remain the king of arcades",
