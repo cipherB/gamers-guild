@@ -10,7 +10,7 @@ const Homepage = () => {
     <main>
       <Carousel />
       <section 
-        className=' py-8 lg:px-14 md:px-8 px-4 border-b border-[#ffffff6d] 
+        className=' py-8 lg:px-14 md:px-8 px-4 border-b border-neutral 
         mb-6 lg:flex justify-center' 
       >
         <div className='lg:max-w-[1350px]'>
@@ -45,7 +45,7 @@ const Homepage = () => {
       <section className=' py-8 lg:px-14 md:px-8 px-4 lg:flex justify-center' >
         <div className='lg:max-w-[1350px] lg:flex gap-x-9 flex-row-reverse'>
           <aside>
-            <div className='lg:sticky top-[100px] border-b border-[#ffffff6d] pb-10 mb-10'>
+            <div className='lg:sticky top-[100px] border-b border-neutral pb-10 mb-10'>
               <p className='font-semibold mb-4' >What you might like</p>
               <div className='flex gap-4 flex-wrap'>
                 {
