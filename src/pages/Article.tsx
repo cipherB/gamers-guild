@@ -28,7 +28,7 @@ const Article = () => {
   return (
     <article className='py-8 lg:px-14 md:px-8 px-4 lg:flex justify-center' >
       <div className='lg:max-w-[1350px] lg:flex gap-x-9 '>
-        <div  className='lg:pr-14 lg:border-r lg:border-neutral min-h-screen' >
+        <div className='lg:pr-14 lg:border-r lg:border-neutral lg:min-h-screen' >
           <div className='flex md:justify-between flex-col gap-y-3 md:flex-row w-full mb-8' >
             <div className='flex items-center gap-x-2' >
               <img  
@@ -107,7 +107,7 @@ const Article = () => {
                   <h3 className='font-semibold mb-3'>More from {article[0].name} </h3>
                   <div className='w-full' >
                     {
-                      authorArticles.slice(0,4).map((item:any, id:number) => (
+                      authorArticles.length > 0 && authorArticles.slice(0,4).map((item:any, id:number) => (
                         <div key={id} className='mb-8' >
                           <Blog2 
                             author={item.name}
