@@ -14,6 +14,9 @@
     "react-router-dom": "^6.3.0"
   },
   "devDependencies": {
+    "@react-leaflet/core": "^2.0.1",
+    "@tomtom-international/web-sdk-maps": "^6.20.0",
+    "@tomtom-international/web-sdk-services": "^6.20.0",
     "@types/js-cookie": "^3.0.2",
     "@types/react": "^18.0.17",
     "@types/react-dom": "^18.0.6",

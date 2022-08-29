@@ -7,7 +7,8 @@ import { Link } from 'react-router-dom';
 
 const Login = () => {
   const { authenticate, setAuthenticate } = useStateContext();
-  console.log("checking", Object.keys(authenticate).length < 1 ? "empty here" : authenticate)
+  // if data is within the global state 'authenticate', populate the email and password in the 
+  // local state.
   const [data, setData] = useState({
     email: Object.keys(authenticate).length < 1 ? "" : authenticate.email,
     password: Object.keys(authenticate).length < 1 ? "" : authenticate.password,
@@ -21,6 +22,7 @@ const Login = () => {
     })
   }
 
+  // Once logged in is submitted, toggle the authentication status to true
   const updateAuthenticate = () => {
     setData({
       ...data,
@@ -28,6 +30,7 @@ const Login = () => {
     })
   }
 
+  // store data in global state and browser cookies
   const handleSubmit = async(e:any) => {
     e.preventDefault();
     setAuthenticate(data)
@@ -35,6 +38,7 @@ const Login = () => {
   }
   return (
     <main className='lg:my-10 md:my-8 flex justify-center items-center min-h-screen' >
+      {/* Get user consent on usage of cookies to store personal data */}
       <CookieConsent
         location='bottom'
         buttonText="Accept"
