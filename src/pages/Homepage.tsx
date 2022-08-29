@@ -6,7 +6,9 @@ import { Link } from 'react-router-dom';
 import { slug } from '../components/ReUsables';
 
 const Homepage = () => {
+  // List of top six trending articles
   const trending = articles.slice(0, 6)
+  // List of all articles aside the top 6
   const articleList = articles.slice(6, articles.length)
   return (
     <main>

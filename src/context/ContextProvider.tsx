@@ -3,6 +3,7 @@ import Cookies from 'js-cookie';
 
 const StateContext = createContext<any>(null);
 
+// Check if authentication cookies is available
 const authInitial = {
   auth: typeof Cookies.get('auth') === 'string' ? JSON.parse(Cookies.get('auth') || '{}') : {}
 }

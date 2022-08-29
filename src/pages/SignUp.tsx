@@ -26,6 +26,7 @@ const SignUp = () => {
     }
   }
 
+  // Verify if the required info to the creation of an account is fulfilled
   const verifySubmit = () => {
     if (
       data.fullname === "" ||

@@ -13,13 +13,14 @@ import Blog from '../components/Blog';
 
 const Article = () => {
   const { id } = useParams();
+  // Get the Object of the article with the current href parameter id
   const [article] = useState<any>(
     articles.filter(item => item.id === JSON.parse(id || "") ? item: null)
   )
+  // Get a list of articles written by the author
   const [authorArticles] = useState<any>(
     articles.filter(item => item.name === article[0].name ? item : null)
   )
-  console.log("first", authorArticles)
 
   useEffect(() => {
     console.log("article here", article)
