@@ -3,9 +3,10 @@ import logo from '../assets/gamers-guild-1.png';
 import Cookies from 'js-cookie';
 import CookieConsent from 'react-cookie-consent';
 import { useStateContext } from '../context/ContextProvider';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const Login = () => {
+  const navigate = useNavigate();
   const { authenticate, setAuthenticate } = useStateContext();
   // if data is within the global state 'authenticate', populate the email and password in the 
   // local state.
@@ -35,6 +36,7 @@ const Login = () => {
     e.preventDefault();
     setAuthenticate(data)
     await Cookies.set('auth', JSON.stringify(data), { expires: 1 })
+    navigate("/me/");
   }
   return (
     <main className='lg:my-10 md:my-8 flex justify-center items-center min-h-screen' >

@@ -19,6 +19,10 @@
   -webkit-text-size-adjust: 100%;
 }
 
+input {
+  color: #242424;
+}
+
 a {
   text-decoration: inherit;
 }

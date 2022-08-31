@@ -2,7 +2,7 @@ import { Route, Routes } from 'react-router-dom';
 import Footer from '../components/Footer';
 import Header from "../components/Header";
 import Article from '../pages/Article';
-import Homepage from '../pages/Homepage';
+import Landing from '../pages/Landing';
 
 const UnauthenticatedRoutes = () => {
   return (
@@ -12,7 +12,7 @@ const UnauthenticatedRoutes = () => {
       </div>
       <div className='lg:pt-[80px] min-h-screen '>
         <Routes>
-          <Route path='' element={<Homepage />} />
+          <Route path='' element={<Landing />} />
           <Route path=':author/:title/:id' element={<Article />} />
         </Routes>
       </div>
