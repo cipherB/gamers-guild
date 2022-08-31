@@ -8,27 +8,33 @@ import {
   BsFillBookmarksFill
 } from 'react-icons/bs';
 import { FiEdit } from 'react-icons/fi';
+import { TooltipComponent } from '@syncfusion/ej2-react-popups';
 import logo from '../assets/gamers-guild-1.png';
 
 const navlinks = [
   {
-    title: "",
+    name: "Home",
+    url: "",
     icon: <BsHouseFill />
   },
   {
-    title: "search",
+    name: "Search",
+    url: "search",
     icon: <BsSearch />
   },
   {
-    title: "bookmarks",
+    name: "Bookmarks",
+    url: "bookmarks",
     icon: <BsFillBookmarksFill />
   },
   {
-    title: "stories",
+    name: "Stories",
+    url: "stories",
     icon: <BsFileTextFill />
   },
   {
-    title: "write",
+    name: "Write",
+    url: "write",
     icon: <FiEdit />
   }
 ]
@@ -44,23 +50,35 @@ const Sidebar = () => {
         <div className='flex flex-col gap-y-14 h-full'>
           {
             navlinks.map((link) => (
-              <NavLink
-                to={`/me/${link.title}`}
-                key={link.title}
-                className={({ isActive }) => (isActive ? activelink : normallink)}
+              <TooltipComponent
+                key={link.url}
+                content={link.name}
+                position="RightCenter"
               >
-                {link.icon}
-              </NavLink>
+                <NavLink
+                  to={`/me/${link.url}`}
+                  key={link.url}
+                  className={({ isActive }) => (isActive ? activelink : normallink)}
+                >
+                  {link.icon}
+                </NavLink>
+              </TooltipComponent>
             ))
           }
         </div>
-        <NavLink
-          to={`/me/profile`}
+        <TooltipComponent
           key={`profile`}
-          className={({ isActive }) => (isActive ? activelink : normallink)}
+          content="Profile"
+          position="RightCenter"
         >
-          <BsPersonCircle />
-        </NavLink>
+          <NavLink
+            to={`/me/profile`}
+            key={`profile`}
+            className={({ isActive }) => (isActive ? activelink : normallink)}
+          >
+            <BsPersonCircle />
+          </NavLink>
+        </TooltipComponent>
       </div>
     </div>
   )
