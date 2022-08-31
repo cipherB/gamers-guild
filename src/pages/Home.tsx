@@ -1,4 +1,3 @@
-import React from 'react';
 import { articles, discoverArticles } from '../data';
 import Blog from '../components/Blog';
 
