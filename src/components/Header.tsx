@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState } from 'react';
 import { HiMenuAlt3 } from 'react-icons/hi';
 import { IoMdClose } from 'react-icons/io';
 import logo from '../assets/gamers-guild-1.png';
@@ -13,7 +13,7 @@ const Header = () => {
     >
       <div className=' hidden md:flex justify-between items-center h-full' >
         <div className=''>
-          <img src={logo} alt="logo" className=' h-11 w-24 cursor-pointer' />
+          <Link to="/"><img src={logo} alt="logo" className=' h-11 w-24 cursor-pointer' /></Link>
         </div>
         <ul className=' list-none flex gap-x-8 items-center'>
           <li><Link to='/' >Our Story</Link></li>
@@ -28,7 +28,7 @@ const Header = () => {
       </div>
       <div className='md:hidden flex justify-between items-center h-full' >
         <div>
-          <img src={logo} alt="logo" className=' h-9 w-18 cursor-pointer' />
+          <Link to="/"><img src={logo} alt="logo" className=' h-9 w-18 cursor-pointer' /></Link>
         </div>
         {
           !menu ? 

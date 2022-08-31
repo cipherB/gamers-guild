@@ -5,7 +5,7 @@ import { articles, discoverArticles } from '../data';
 import { Link } from 'react-router-dom';
 import { slug } from '../components/ReUsables';
 
-const Homepage = () => {
+const Landing = () => {
   // List of top six trending articles
   const trending = articles.slice(0, 6)
   // List of all articles aside the top 6
@@ -83,4 +83,4 @@ const Homepage = () => {
   )
 }
 
-export default Homepage
+export default Landing
