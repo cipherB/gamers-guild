@@ -15,11 +15,11 @@ const UnauthenticatedRoutes = () => {
         <Sidebar />
       </div>
       <div 
-        className='h-[60px] bg-slate-700 w-full flex items-center pl-[15%] lg:hidden sticky top-0 z-20'
+        className='h-[60px] bg-slate-700 w-full flex items-center pl-[5%] lg:hidden sticky top-0 z-20'
       >
         <Link to="/me/"><img src={logo} alt="logo" className=' h-9 w-18 cursor-pointer' /></Link>
       </div>
-      <div className='lg:pt-10 pt-16 '>
+      <div className='lg:pt-10 pt-16 lg:pl-24'>
         <Routes>
           <Route path='' element={<Home />} />
           <Route path='search' element={<Search />} />
