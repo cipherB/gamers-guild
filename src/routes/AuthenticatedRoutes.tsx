@@ -7,6 +7,8 @@ import Stories from '../pages/Stories';
 import Profile from '../pages/Profile';
 import Sidebar from '../components/Sidebar';
 import logo from '../assets/gamers-guild-1.png';
+import Write from '../pages/Write';
+import Bookmarks from '../pages/Bookmarks';
 
 const UnauthenticatedRoutes = () => {
   return (
@@ -19,12 +21,14 @@ const UnauthenticatedRoutes = () => {
       >
         <Link to="/me/"><img src={logo} alt="logo" className=' h-9 w-18 cursor-pointer' /></Link>
       </div>
-      <div className='lg:pt-10 pt-16 lg:pl-24'>
+      <div className='lg:pt-10 pt-8 lg:pl-24'>
         <Routes>
           <Route path='' element={<Home />} />
+          <Route path='bookmarks' element={<Bookmarks />} />
           <Route path='search' element={<Search />} />
           <Route path='stories' element={<Stories />} />
           <Route path='profile' element={<Profile />} />
+          <Route path='write' element={<Write />} />
         </Routes>
       </div>
       <div className='w-full fixed bottom-0 lg:hidden z-20'>

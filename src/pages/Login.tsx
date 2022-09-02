@@ -11,7 +11,7 @@ const Login = () => {
   // if data is within the global state 'authenticate', populate the email and password in the 
   // local state.
   const [data, setData] = useState({
-    email: Object.keys(authenticate).length < 1 ? "" : authenticate.email,
+    username: Object.keys(authenticate).length < 1 ? "" : authenticate.username,
     password: Object.keys(authenticate).length < 1 ? "" : authenticate.password,
     isAuthenticated: false,
   })
@@ -62,13 +62,13 @@ const Login = () => {
         <h2 className='text-center mb-6 font-bold text-2xl' >Log in to your account</h2>
         <form onSubmit={handleSubmit} >
           <div className='mb-4' >
-            <label className='lg:text-xl font-semibold mb-2' >Email</label>
+            <label className='lg:text-xl font-semibold mb-2' >Username</label>
             <input 
-              name="email"
-              type="email"
+              name="username"
+              type="text"
               className='focus:outline focus:outline-site-primary focus:border-site-primary 
               h-[50px] w-full rounded pl-4 border border-neutral'
-              value={data.email}
+              value={data.username}
               onChange={handleChange}
             />
           </div>
@@ -85,9 +85,9 @@ const Login = () => {
           </div>
           <button 
             className={`w-full border-0 rounded font-semibold py-3
-            ${(data.email ===  "") || (data.password === "") ? "opacity-50 bg-gray-700" :
+            ${(data.username ===  "") || (data.password === "") ? "opacity-50 bg-gray-700" :
             "opacity-100 btn-glow bg-site-primary"}`} 
-            disabled={(data.email ===  "") && (data.password === "") ? true : false}
+            disabled={(data.username ===  "") && (data.password === "") ? true : false}
             type="submit"
             onClick={updateAuthenticate}
           >
