@@ -123,8 +123,10 @@ const Write = () => {
   const handleKeyDown: KeyboardEventHandler<HTMLDivElement> = (e) => {
     const { inputValue, value } = tags;
     if (!inputValue) return;
+    console.log(e.key)
     switch (e.key) {
       case 'Enter':
+      case ' ':
       case 'Tab':
         // console.group('Value Added');
         // console.log(tags);
@@ -143,9 +145,14 @@ const Write = () => {
     setThumbnail(URL.createObjectURL(file));
     console.log("image here", thumbnail)
   };
+
+  const handleSubmit = (e:any) => {
+    e.preventDefault();
+    console.log("kinda worked")
+  }
   return (
     <div>
-      <form className='px-4 md:px-10' >
+      <form className='px-4 md:px-10' onSubmit={handleSubmit} >
         <div className='flex justify-between w-full items-center mb-6 md:mb-10' >
           <h2 className='text-xl font-semibold' >Share your thoughts</h2>
           <button
@@ -160,7 +167,7 @@ const Write = () => {
             <label htmlFor='title' className='lg:text-xl font-semibold mb-4' >Title</label>
             <input 
               name='title'
-              type='text'
+              type="email"
               className='w-full lg:w-full h-[50px] pl-4 border-neutral border bg-transparent
               focus:outline focus:outline-site-primary focus:border-site-primary text-white
               rounded'
@@ -197,6 +204,11 @@ const Write = () => {
             </div>
           </div>
           <div className='mb-6 lg:mb-14'>
+            <RichTextEditorComponent >
+              <Inject services={[HtmlEditor, Toolbar, Image, Link, QuickToolbar]} />
+            </RichTextEditorComponent>
+          </div>
+          <div className='mb-6 lg:mb-14' style={{zIndex:"1000 !important"}}>
             <label htmlFor='category' className='lg:text-xl font-semibold mb-4' >Category</label>
             <Select 
               name="category"
@@ -207,13 +219,12 @@ const Write = () => {
               placeholder="Enter article category"
             />
           </div>
-          <div className='mb-6 lg:mb-14'>
+          <div className='mb-10 lg:pb-36'>
             <label htmlFor='tags' className='lg:text-xl font-semibold mb-4' >Tags</label>
             <CreateableSelect 
               name="tags"
               components={components}
               inputValue={tags.inputValue}
-              isClearable
               isMulti
               menuIsOpen={false}
               onChange={handleChange}
@@ -224,12 +235,7 @@ const Write = () => {
               styles={styles}
             />
           </div>
-          <div className='mb-10 lg:mb-14'>
-            <RichTextEditorComponent >
-              <Inject services={[HtmlEditor, Toolbar, Image, Link, QuickToolbar]} />
-            </RichTextEditorComponent>
-          </div>
-          <div className='pb-24 lg:hidden'>
+          <div className='pb-44 lg:hidden'>
             <button
               className='w-full md:w-2/3 py-2 bg-site-primary rounded-md font-bold text-lg'
               type='submit'
