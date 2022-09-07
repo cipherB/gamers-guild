@@ -4,16 +4,22 @@ import Cookies from 'js-cookie';
 import CookieConsent from 'react-cookie-consent';
 import { useStateContext } from '../context/ContextProvider';
 import { Link, useNavigate } from 'react-router-dom';
+import { useMutation } from '@tanstack/react-query';
+import { postLogin } from '../helper';
 
 const Login = () => {
   const navigate = useNavigate();
-  const { authenticate, setAuthenticate } = useStateContext();
+  const { authenticate, setAuthenticate, setToken } = useStateContext();
   // if data is within the global state 'authenticate', populate the email and password in the 
   // local state.
   const [data, setData] = useState({
     username: Object.keys(authenticate).length < 1 ? "" : authenticate.username,
     password: Object.keys(authenticate).length < 1 ? "" : authenticate.password,
     isAuthenticated: false,
+  })
+
+  const mutation = useMutation<any, Error, any>(login => {
+    return postLogin(login)
   })
 
   const handleChange = (e:any) => {
@@ -31,12 +37,28 @@ const Login = () => {
     })
   }
 
+  const userSession = (user:any, token:string) => {
+    console.log("thi", token)
+    setAuthenticate({...user, isAuthenticated: data.isAuthenticated})
+    setToken(token)
+    Cookies.set('token', JSON.stringify(token), { expires: 1 })
+    Cookies.set('auth', JSON.stringify({
+      ...user, isAuthenticated: data.isAuthenticated
+    }), { expires: 1 })
+    navigate("/me");
+    console.log("that", user)
+  }
+
   // store data in global state and browser cookies
-  const handleSubmit = async(e:any) => {
+  const handleSubmit = (e:any) => {
     e.preventDefault();
-    setAuthenticate(data)
-    await Cookies.set('auth', JSON.stringify(data), { expires: 1 })
-    navigate("/me/");
+    mutation.mutate({
+      username: data.username,
+      password: data.password
+    },
+    {
+      onSuccess: (res) => {userSession(res?.data.data.user, res?.data.data.token)},
+    })
   }
   return (
     <main className='lg:my-10 md:my-8 flex justify-center items-center min-h-screen' >

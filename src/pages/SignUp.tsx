@@ -1,8 +1,11 @@
 import { useState } from 'react';
 import logo from '../assets/gamers-guild-1.png';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { useMutation } from '@tanstack/react-query';
+import { postSignUp } from '../helper';
 
 const SignUp = () => {
+  const navigate = useNavigate();
   const [data, setData] = useState({
     fullname: "",
     username: "",
@@ -10,7 +13,12 @@ const SignUp = () => {
     password: "",
     confirm_password: "",
     terms_privacy: false
+  });
+
+  const mutation = useMutation<any, Error, any>(newUser => {
+    return postSignUp(newUser)
   })
+  
 
   const handleChange = (e:any) => {
     if (e.target.type === "checkbox") {
@@ -33,6 +41,7 @@ const SignUp = () => {
       data.email === "" ||
       data.username === "" ||
       data.password === "" ||
+      // data.password.length >= 8 ||
       data.confirm_password !== data.password ||
       data.terms_privacy !== true
     ) {
@@ -44,6 +53,15 @@ const SignUp = () => {
 
   const handleSubmit = (e:any) => {
     e.preventDefault();
+    mutation.mutate({
+      fullname: data.fullname,
+      username: data.username,
+      email: data.email,
+      password: data.password
+    },
+    {
+      onSuccess: (res) => {navigate("/login")},
+    })
   }
   return (
     <main className='lg:my-10 md:my-8 flex justify-center items-center min-h-screen' >
@@ -125,7 +143,7 @@ const SignUp = () => {
             ${verifySubmit() ? "bg-site-primary btn-glow opacity-100" : "opacity-50 bg-gray-700"}`}
             disabled={!verifySubmit()}
           >
-            Sign Up
+            {mutation.isLoading ? "Loading...." : "Sign Up"}
           </button>
           <div className='w-full text-center my-5' >
             <p>Already have an account? <Link className='text-site-primary' to="/login" >Log in</Link></p>
