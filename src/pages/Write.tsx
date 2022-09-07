@@ -123,11 +123,11 @@ const Write = () => {
   const handleKeyDown: KeyboardEventHandler<HTMLDivElement> = (e) => {
     const { inputValue, value } = tags;
     if (!inputValue) return;
+    console.log("another key trial", e.nativeEvent.keyCode)
     console.log(e.key)
-    switch (e.key) {
-      case 'Enter':
-      case ' ':
-      case 'Tab':
+    switch (e.nativeEvent.keyCode) {
+      case 13:
+      case 9:
         // console.group('Value Added');
         // console.log(tags);
         // console.groupEnd();

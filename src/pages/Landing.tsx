@@ -4,12 +4,33 @@ import Blog from '../components/Blog';
 import { articles, discoverArticles } from '../data';
 import { Link } from 'react-router-dom';
 import { slug } from '../components/ReUsables';
+import { useArticlesQuery } from '../helper';
 
 const Landing = () => {
   // List of top six trending articles
   const trending = articles.slice(0, 6)
+
   // List of all articles aside the top 6
   const articleList = articles.slice(6, articles.length)
+
+  // Fetch articles
+  const {
+    data:articlesData,
+    error:articlesError,
+    isError:articlesIsError,
+    isSuccess:articlesIsSuccess,
+    isLoading:articlesIsLoading
+  } = useArticlesQuery();
+  console.log("apie", articlesData)
+
+  if (articlesIsError) {
+    alert(articlesError)
+  }
+
+  const articlesFiltered = articlesData?.data.data.articles.filter(
+    (item:any) => item.published === true
+  )
+
   return (
     <main>
       <Carousel />
@@ -61,7 +82,7 @@ const Landing = () => {
             </div>
           </aside>
           <div className='w-full' >
-            {
+            {/* {
               articleList.map((item, id) => (
                 <div key={id} className='w-full mb-8'>
                   <Blog 
@@ -70,6 +91,24 @@ const Landing = () => {
                     category={item.category}
                     date={item.date}
                     read_time={item.read_time}
+                    title={item.title}
+                    tags={item.tags}
+                  />
+                </div>
+              ))
+            } */}
+            {
+              articlesIsLoading ? (<div>loading.....</div>) :
+              articlesIsSuccess && articlesFiltered.length < 1 ?
+              <h2>No articles available</h2> : 
+              articlesFiltered.map((item:any, id:number)=> (
+                <div key={id} className='w-full mb-8'>
+                  <Blog 
+                    id={item._id}
+                    author={item.author.fullname}
+                    category={item.category}
+                    date={item.publishedDate}
+                    read_time={5}
                     title={item.title}
                     tags={item.tags}
                   />
