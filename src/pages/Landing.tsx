@@ -21,7 +21,6 @@ const Landing = () => {
     isSuccess:articlesIsSuccess,
     isLoading:articlesIsLoading
   } = useArticlesQuery();
-  console.log("apie", articlesData)
 
   if (articlesIsError) {
     alert(articlesError)
@@ -46,7 +45,7 @@ const Landing = () => {
                 trending.map((item, id) => (
                   <div key={id} className='flex gap-x-2 lg:gap-x-4' >
                     <h4 className='text-2xl font-semibold' >0{id+1} </h4>
-                    <Link to={`/${slug(item.name)}/${slug(item.title)}/${item.id}`}>
+                    <Link to={`/`}>
                       <div className='flex items-center mb-2' >
                         <img  
                           src={`https://joeschmoe.io/api/v1/${item.name.split(' ')[0]}`} 
@@ -105,12 +104,13 @@ const Landing = () => {
                 <div key={id} className='w-full mb-8'>
                   <Blog 
                     id={item._id}
-                    author={item.author.fullname}
+                    author={item.author.username}
                     category={item.category}
                     date={item.publishedDate}
                     read_time={5}
                     title={item.title}
                     tags={item.tags}
+                    thumbnail={item.thumbnail}
                   />
                 </div>
               ))

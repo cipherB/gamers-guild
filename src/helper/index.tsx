@@ -21,9 +21,28 @@ interface ArticleData {
   tags: string[];
 }
 
-export const postArticle = (data:ArticleData|void) => {
+// Get single article
+
+const fetchArticle = (article_id:string | undefined) => {
   return (
-    axios.post(`https://gamersguild-v1.herokuapp.com/api/v1/articles`, data)
+    axios.get(`https://gamersguild-v1.herokuapp.com/api/v1/articles/${article_id}`)
+  )
+}
+
+export const useArticleQuery = (article_id:string | undefined) => {
+  console.log("soemthing work", article_id)
+  return useQuery(["singleArticle"], () => fetchArticle(article_id))
+}
+
+export const postArticle = (data:ArticleData|void, token:string) => {
+  console.log("tk here", token)
+  const config = {
+    headers: {
+      'Authorization': `Bearer ${token}`
+    }
+  }
+  return (
+    axios.post(`https://gamersguild-v1.herokuapp.com/api/v1/articles`, data, config)
   )
 }
 

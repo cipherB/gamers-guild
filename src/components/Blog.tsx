@@ -3,9 +3,9 @@ import { Link } from 'react-router-dom';
 import { slug } from './ReUsables';
 
 interface Props {
-  id: number;
+  id: string;
   author: string;
-  // thumbnail: string;
+  thumbnail: string | null;
   // author_img: string;
   title: string;
   // content: string;
@@ -15,10 +15,10 @@ interface Props {
   tags: string[];
 }
 
-const Blog:FC<Props> = ({ author, title, date, read_time, category, tags, id  }) => {  
+const Blog:FC<Props> = ({ author, title, date, read_time, category, tags, id, thumbnail  }) => {  
   return (
     <div className='w-full flex justify-between gap-x-4' >
-      <Link to={`/${slug(author)}/${slug(title)}/${id}`}>
+      <Link to={id.length > 5 ? `/${slug(author)}/${slug(title)}/${id}` : `/`}>
         <div className='flex items-center mb-2' >
           <img  
             src={`https://joeschmoe.io/api/v1/${author.split(' ')[0]}`}
@@ -37,7 +37,8 @@ const Blog:FC<Props> = ({ author, title, date, read_time, category, tags, id  })
       </Link>
       <Link to={`/${slug(author)}/${slug(title)}/${id}`}>
         <img 
-          src={`https://source.unsplash.com/1600x900/?${tags[0].toLowerCase()}`} 
+          src={thumbnail === null ? `https://source.unsplash.com/1600x900/?${tags[0].toLowerCase()}` 
+          : thumbnail} 
           alt={title} 
           className='md:h-24 md:w-24 h-12 w-12' 
         />
