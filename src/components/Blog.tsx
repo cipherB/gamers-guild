@@ -28,7 +28,7 @@ const Blog:FC<Props> = ({ author, title, date, read_time, category, tags, id, th
           <p>{author} </p>
         </div>
         <h4 className='font-bold md:text-2xl mb-3' >{title} </h4>
-        <p>blaaaaaaaaaaaaaaaaaa </p>
+        <p>Content published by {author} </p>
         <p>
           {date} . {read_time} mins read . <span className='p-1 rounded bg-slate-500'>
             {category} 
@@ -37,8 +37,7 @@ const Blog:FC<Props> = ({ author, title, date, read_time, category, tags, id, th
       </Link>
       <Link to={`/${slug(author)}/${slug(title)}/${id}`}>
         <img 
-          src={thumbnail === null ? `https://source.unsplash.com/1600x900/?${tags[0].toLowerCase()}` 
-          : thumbnail} 
+          src={`https://source.unsplash.com/1600x900/?${tags[0].toLowerCase()}`} 
           alt={title} 
           className='md:h-24 md:w-24 h-12 w-12' 
         />

@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useLocation } from 'react-router-dom';
 import { articles } from '../data';
 import { 
   BsTwitter, 
@@ -15,7 +15,9 @@ import { useArticlesQuery } from '../helper';
 
 const Article = () => {
   const { id } = useParams();
+  const location = useLocation().pathname
   console.log("idd", id)
+  useEffect(() => {console.log("loc me", location)}, [location])
   
   const {
     data:articleData,
@@ -29,15 +31,17 @@ const Article = () => {
     data:articlesData,
     isSuccess:articlesIsSuccess,
   } = useArticlesQuery();
-  // Get the Object of the article with the current href parameter id
-  console.log("ar", articleData)
-  console.log("ars", articlesData)
+  
   // Get a list of articles written by the author
-  const [authorArticles] = useState<any>(
+  const authorArticles =
     articleIsSuccess ? articlesData?.data.data.articles.filter(
-      (item:any) => item.author.username === articleData?.data.data.article.author.username ? item: null
+      (item:any) => (item.author.username === articleData?.data.data.article.author.username &&
+        item._id !== articleData?.data.data.article._id ) ? item: null
     ) : []
-  )
+
+  const wordsPerMin = (word:number) => {
+    return Math.round(word/200)
+  }
   
   return (
     <article className='py-8 lg:px-14 md:px-8 px-4 lg:flex justify-center' >
@@ -54,7 +58,10 @@ const Article = () => {
                 />
                 <div className='flex flex-col justify-between'>
                   <p>{articleData?.data.data.article.author.username} </p>
-                  <p>{articleData?.data.data.article.publishedDate} . {5} mins read </p>
+                  <p>
+                    {articleData?.data.data.article.publishedDate.slice(0,10)} .{" "}
+                    {wordsPerMin(articleData?.data.data.article.content.length)} mins read 
+                  </p>
                 </div>
               </div>
               <div className='flex items-center gap-x-5' >
@@ -65,6 +72,14 @@ const Article = () => {
                   <BsLink45Deg />
                 </div>
                 <BsBookmarkPlus />
+              </div>
+              <div className='flex gap-x-2 flex-wrap gap-y-1 items-center' >
+                <p className='pr-1' >tags: </p>
+                {
+                  articleData?.data.data.article.tags.map((item:string, id:number) => (
+                    <p key={id} className='bg-slate-200 text-slate-900 py-0.5 px-1 rounded' >{item} </p>
+                  ))
+                }
               </div>
             </div>
             <h2 className='font-bold text-2xl mb-6' >{articleData?.data.data.article.title} </h2>
@@ -114,12 +129,12 @@ const Article = () => {
                       {
                         authorArticles.length > 0 && authorArticles.slice(0,4).map((item:any, id:number) => (
                           <div key={id} className='mb-8' >
-                            {/* <Blog2 
-                              author={item.name}
-                              id={item.id}
+                            <Blog2 
+                              author={item.author.username}
+                              id={item._id}
                               tags={item.tags}
                               title={item.title}
-                            /> */}
+                            />
                           </div>
                         ))
                       }
