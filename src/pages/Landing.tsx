@@ -106,7 +106,7 @@ const Landing = () => {
                     id={item._id}
                     author={item.author.username}
                     category={item.category}
-                    date={item.publishedDate}
+                    date={item.publishedDate.slice(0, 10)}
                     read_time={5}
                     title={item.title}
                     tags={item.tags}

@@ -31,7 +31,7 @@ const fetchArticle = (article_id:string | undefined) => {
 
 export const useArticleQuery = (article_id:string | undefined) => {
   console.log("soemthing work", article_id)
-  return useQuery(["singleArticle"], () => fetchArticle(article_id))
+  return useQuery(["singleArticle", article_id], () => fetchArticle(article_id))
 }
 
 export const postArticle = (data:ArticleData|void, token:string) => {
