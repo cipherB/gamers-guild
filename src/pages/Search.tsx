@@ -42,13 +42,14 @@ const Search = () => {
           searchResult.map((item:any, id:number) => (
             <div key={id} className='w-full mb-8'>
               <Blog 
-                id={item.id}
+                id={JSON.stringify(item.id)}
                 author={item.name}
                 category={item.category}
                 date={item.date}
                 read_time={item.read_time}
                 title={item.title}
                 tags={item.tags}
+                thumbnail={null}
               />
             </div>
           ))

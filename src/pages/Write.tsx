@@ -1,4 +1,5 @@
 import { KeyboardEventHandler, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { BsPlus } from 'react-icons/bs';
 import { 
   HtmlEditor, 
@@ -12,6 +13,9 @@ import {
 import CreateableSelect from 'react-select/creatable';
 import Select from 'react-select';
 import { ActionMeta, OnChangeValue } from 'react-select';
+import { useMutation } from '@tanstack/react-query';
+import { postArticle } from '../helper';
+import { useStateContext } from '../context/ContextProvider';
 
 // createable component object
 const components = {
@@ -83,7 +87,7 @@ const categoryOptions = [
   {value: "fantasy", label: "Fantasy"},
   {value: "sci-fi", label: "Sci-fi"},
   {value: "sport", label: "Sport"},
-  {value: "adventure", label: "Adventure"},
+  {value: "Adventure", label: "Adventure"},
   {value: "arcade", label: "Arcade"},
 ]
 
@@ -94,6 +98,7 @@ interface TagsState {
 }
 
 const Write = () => {
+  const [title, setTitle] = useState<string>("")
   const [tags, setTags] = useState<TagsState>({
     inputValue: '',
     value: [],
@@ -103,6 +108,14 @@ const Write = () => {
     label: ''
   });
   const [thumbnail, setThumbnail] = useState<any>([]);
+  const [publish, setPublish] = useState<boolean>(false)
+
+  const navigate = useNavigate();
+  const { token } = useStateContext();
+
+  const mutation = useMutation<any, Error, any>(article => {
+    return postArticle(article, token)
+  })
 
   const handleChange = (
     value: OnChangeValue<Option, true>,
@@ -123,8 +136,6 @@ const Write = () => {
   const handleKeyDown: KeyboardEventHandler<HTMLDivElement> = (e) => {
     const { inputValue, value } = tags;
     if (!inputValue) return;
-    console.log("another key trial", e.nativeEvent.keyCode)
-    console.log(e.key)
     switch (e.nativeEvent.keyCode) {
       case 13:
       case 9:
@@ -139,6 +150,13 @@ const Write = () => {
     }
   };
 
+  var rteObject ! : RichTextEditorComponent;
+  var rteValue ! : string;
+  const getFormattedContent = () => {
+    rteValue = rteObject.getHtml()
+    return rteValue
+  }
+
   // input thumbnail image change
   const onImageChange = (e:any) => {
     const [file] = e.target.files;
@@ -149,29 +167,69 @@ const Write = () => {
   const handleSubmit = (e:any) => {
     e.preventDefault();
     console.log("kinda worked")
+    if (publish) {
+      const formData = {
+        title,
+        thumbnail,
+        content: getFormattedContent(),
+        category: category.value,
+        tags: tags.value.length === 0 ? [] : tags.value.map(item => item.value),
+        published: publish
+      }
+      mutation.mutate(formData,
+      {
+        onSuccess: (res) => {navigate("/me")},
+      })
+    } else {
+      const formData = {
+        title,
+        thumbnail,
+        content: getFormattedContent(),
+        category: category.value,
+        tags: tags.value.length === 0 ? [] : tags.value.map(item => item.value),
+      }
+      mutation.mutate(formData,
+      {
+        onSuccess: (res) => {navigate("/me")},
+      })
+    }
   }
   return (
     <div>
       <form className='px-4 md:px-10' onSubmit={handleSubmit} >
         <div className='flex justify-between w-full items-center mb-6 md:mb-10' >
           <h2 className='text-xl font-semibold' >Share your thoughts</h2>
-          <button
-            className='px-4 py-2 bg-site-primary rounded-md hidden lg:block font-bold text-lg'
-            type='submit'
-          >
-            Publish
-          </button>
+          <div className='flex gap-x-3 items-center' >
+            <button
+              className='px-4 py-2 bg-transparent border rounded-md hidden lg:block font-bold text-lg
+              border-site-primary text-site-primary'
+              type='submit'
+              name="draft"
+            >
+              Draft
+            </button>
+            <button
+              className='px-4 py-2 bg-site-primary rounded-md hidden lg:block font-bold text-lg'
+              type='submit'
+              onClick={() => setPublish(true)}
+              name='publish'
+            >
+              Publish
+            </button>
+          </div>
         </div>
         <div className='lg:pr-[20%]' >
           <div className='mb-6 lg:mb-14' >
             <label htmlFor='title' className='lg:text-xl font-semibold mb-4' >Title</label>
             <input 
               name='title'
-              type="email"
+              type="text"
               className='w-full lg:w-full h-[50px] pl-4 border-neutral border bg-transparent
               focus:outline focus:outline-site-primary focus:border-site-primary text-white
               rounded'
               placeholder='title'
+              value={title}
+              onChange={(e) => setTitle(e.target.value)}
             />
           </div>
           <div className='mb-6 lg:mb-14' >
@@ -204,7 +262,7 @@ const Write = () => {
             </div>
           </div>
           <div className='mb-6 lg:mb-14'>
-            <RichTextEditorComponent >
+            <RichTextEditorComponent ref={(richtexteditor: RichTextEditorComponent) => {rteObject=richtexteditor}} >
               <Inject services={[HtmlEditor, Toolbar, Image, Link, QuickToolbar]} />
             </RichTextEditorComponent>
           </div>
@@ -235,10 +293,20 @@ const Write = () => {
               styles={styles}
             />
           </div>
-          <div className='pb-44 lg:hidden'>
+          <div className='pb-44 lg:hidden flex flex-col w-full gap-y-3'>
+            <button
+              className='w-full md:w-2/3 py-2 bg-transparent border rounded-md font-bold text-lg
+              border-site-primary text-site-primary'
+              type='submit'
+              name='draft'
+            >
+              Draft
+            </button>
             <button
               className='w-full md:w-2/3 py-2 bg-site-primary rounded-md font-bold text-lg'
               type='submit'
+              name='publish'
+              onClick={() => setPublish(true)}
             >
               Publish
             </button>
