@@ -59,7 +59,8 @@ const Article = () => {
                 <div className='flex flex-col justify-between'>
                   <p>{articleData?.data.data.article.author.username} </p>
                   <p>
-                    {articleData?.data.data.article.publishedDate.slice(0,10)} .{" "}
+                    {articleData?.data.data.article.publishedDate ? 
+                    articleData?.data.data.article.publishedDate.slice(0,10) : "nill"} .{" "}
                     {wordsPerMin(articleData?.data.data.article.content.length)} mins read 
                   </p>
                 </div>
