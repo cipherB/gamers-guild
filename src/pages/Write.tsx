@@ -83,12 +83,12 @@ const styles = {
 
 // Select options
 const categoryOptions = [
-  {value: "action", label: "Action"},
-  {value: "fantasy", label: "Fantasy"},
-  {value: "sci-fi", label: "Sci-fi"},
-  {value: "sport", label: "Sport"},
+  {value: "Action", label: "Action"},
+  {value: "Fantasy", label: "Fantasy"},
+  {value: "Sci-fi", label: "Sci-fi"},
+  {value: "Sport", label: "Sport"},
   {value: "Adventure", label: "Adventure"},
-  {value: "arcade", label: "Arcade"},
+  {value: "Arcade", label: "Arcade"},
 ]
 
 // createable multi select interface
