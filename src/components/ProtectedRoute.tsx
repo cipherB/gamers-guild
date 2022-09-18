@@ -7,7 +7,7 @@ interface Props {
 }
 
 const ProtectedRoute:FC<Props> = ({ children }) => {
-    const { authenticate } = useStateContext();
+  const { authenticate } = useStateContext();
 
   if((authenticate?.isAuthenticated === false) || (authenticate?.isAuthenticated === undefined)) {
     return <Navigate replace to={'/login'} />
